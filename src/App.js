@@ -8,8 +8,9 @@ import Listing from "./Listing";
 const URL = process.env.NODE_ENV === 'development'
     ? 'https://marcg.ddnss.org/apk/index.cgi?listing'
     : './index.cgi?listing'
-// const INTERVAL = 9 * 1000
-const INTERVAL = 35 * 1000 /* update interval in msecs, e.g. every 35 secs */
+const INTERVAL = process.env.NODE_ENV === 'development'
+    ? 9000
+    : 35 * 1000 /* update interval in msecs, e.g. every 35 secs */
 
 const App = () => {
 
@@ -20,7 +21,6 @@ const App = () => {
     const mountedRef = useRef(false)
     const firstAccessRef = useRef(+new Date())
 
-    // const tellNewLoc = useCallback((i, {x, y}, stack, posReached) => {
     const doFetch = useCallback(() => {
         if (!mountedRef.current) return
         fetch(URL)
@@ -32,15 +32,6 @@ const App = () => {
                 if (mountedRef.current) {
                     setFiles(data)
                 }
-                // /* highlight if updated since first access */
-                // /* NOTE: this will continually update the newSince state var and thus cause a re-render */
-                // if (firstAccessRef && data) {
-                //     let _newSince = data.filter(({ts}) => ts * 1000 > firstAccessRef.current)
-                //     if (_newSince.length) {
-                //         setNewSince(_newSince)
-                //     }
-                // }
-
                 /* only update newSince arr if ts changed */
                 if (firstAccessRef && data) {
                     let _newSince = data.filter(({ts}) => ts * 1000 > firstAccessRef.current)
@@ -85,7 +76,6 @@ const App = () => {
     useEffect(() => {
         mountedRef.current = true
         doFetch()
-        // return () => mounted = false
         return () => mountedRef.current = false
     }, [doFetch])
 
@@ -102,13 +92,13 @@ const App = () => {
                     height: window.innerHeight,
                 });
             }
-            window.addEventListener("resize", handleResize);
+            window.addEventListener('resize', handleResize)
             // Call handler right away so state gets updated with initial window size
-            handleResize();
+            handleResize()
             // Remove event listener on cleanup
-            return () => window.removeEventListener("resize", handleResize);
-        }, []); // Empty array ensures that effect is only run on mount
-        return windowSize;
+            return () => window.removeEventListener('resize', handleResize)
+        }, []) // Empty array ensures that effect is only run on mount
+        return windowSize
     }
 
     const useInterval = (callback, delay) => { /* https://overreacted.io/making-setinterval-declarative-with-react-hooks/ */
@@ -157,7 +147,7 @@ const App = () => {
             />
 
             <footer>
-                <p>last checked = <code>{(new Date(lastFetch)).toISOString()}</code></p>
+                <p>last checked: <code>{(new Date(lastFetch)).toISOString()}</code></p>
             </footer>
         </div>
     )

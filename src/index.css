@@ -99,6 +99,11 @@ div.col1, div.col2, div.col3 {
     text-align: left;
     padding-left: 9px;
 }
+.colCentred {
+    text-align: center;
+    /*border: 2px solid orangered;*/
+    background-color: rgba(128, 63, 63, 0.125);
+}
 
 .rowOlderOuter {
     display: flex;

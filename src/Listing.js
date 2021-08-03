@@ -8,7 +8,9 @@ const Listing = props => {
         newSince,
     } = props
 
+    /* overrides for small devices */
     const styleFlexMain = direction === 'column' ? { flexDirection: 'column'} : {}
+    const classColCentred = direction === 'column' ? 'colCentred' : ''
 
     return (
         <section className={'listing'} style={{...styleFlexMain}}>
@@ -36,7 +38,7 @@ const Listing = props => {
                             {i === 0 ? <h3>Most recent:</h3> : null}
 
                             <div className={'rowInner'} style={{...styleFlexMain}}>
-                                <div className={'col1'}>
+                                <div className={'col1 ' + classColCentred}>
                                     {dHighlight}
                                     {dHighlight && <br/>}
                                     {d}
