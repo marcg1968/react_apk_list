@@ -41,3 +41,75 @@ h1 {
 .hottestL {
     border-left: 9px solid rgba(203, 22, 22, 0.67);
 }
+
+footer {
+    padding-top: 1.2rem;
+    padding-bottom: 2.1rem;
+    background-color: rgba(240, 248, 255, 0.33);
+}
+
+section.listing {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding-bottom: 3rem;
+}
+
+div.listingContainer {
+    flex: 6;
+    border: 10px solid rgba(128, 63, 63, 0.66);
+    flex-direction: row;
+    background-color: rgb(254, 254, 254);
+    padding-bottom: 3rem;
+}
+
+.colSpacer {
+    flex: 1;
+    /*border: 10px solid green;*/
+}
+
+.rowOuter {
+    flex: 1;
+    /*border: 5px solid orangered;*/
+}
+
+.rowInner {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+div.col1, div.col2, div.col3 {
+    margin: 6px;
+    padding: 6px;
+}
+.col1 {
+    flex: 2;
+    text-align: right;
+    padding-right: 9px;
+}
+.col2 {
+    flex: 3;
+    padding-right: 9px;
+    padding-left: 9px;
+    left: 9px;
+}
+.col3 {
+    flex: 2;
+    text-align: left;
+    padding-left: 9px;
+}
+
+.rowOlderOuter {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.rowOlderInner {
+    /*border: 5px solid orangered;*/
+    flex: 3;
+    border-top: 1px solid rgb(40, 44, 52);
+    padding-top: 0.67rem;
+    margin-top: 2rem;
+}
