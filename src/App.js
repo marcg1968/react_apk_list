@@ -8,8 +8,8 @@ import Listing from "./Listing";
 const URL = process.env.NODE_ENV === 'development'
     ? 'https://marcg.ddnss.org/apk/index.cgi?listing'
     : './index.cgi?listing'
-// const INTERVAL = 1.5 * 1000 * 60 /* update interval in msecs, e.g. every 1.5 minutes */
-const INTERVAL = 9 * 1000
+// const INTERVAL = 9 * 1000
+const INTERVAL = 35 * 1000 /* update interval in msecs, e.g. every 35 secs */
 
 const App = () => {
 
